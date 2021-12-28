@@ -313,7 +313,7 @@ namespace ReflectionSample
             //}
 
             foreach (var method in oneTypeFromCurrentAssembly.GetMethods(
-                 BindingFlags.Public | BindingFlags.NonPublic))
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
                 Console.WriteLine($"{method}, public: {method.IsPublic}");
             }
