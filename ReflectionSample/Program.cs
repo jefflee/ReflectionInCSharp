@@ -1,21 +1,34 @@
-﻿using Microsoft.Extensions.Configuration;
-using ReflectionMagic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using ReflectionMagic;
 
 namespace ReflectionSample
 {
     class Program
     {
-        private static string _typeFromConfiguration = "ReflectionSample.Person";
-        private static NetworkMonitorSettings _networkMonitorSettings = new NetworkMonitorSettings();
+        private static readonly string _typeFromConfiguration = "ReflectionSample.Person";
+        private static readonly NetworkMonitorSettings _networkMonitorSettings = new NetworkMonitorSettings();
         private static Type _warningServiceType;
         private static MethodInfo _warningServiceMethod;
         private static object _warningService;
         private static List<object> _warningServiceParameterValues;
 
         static void Main(string[] args)
+        {
+            //InspectingMetadata();
+
+            //InstantiatingAndManipulatingObjects();
+
+            //NetworkMonitorExample();
+
+            //Generics();
+
+            ReflectionMagic();
+        }
+
+        static void ReflectionMagic()
         {
             var person = new Person("Kevin");
 
@@ -31,7 +44,7 @@ namespace ReflectionSample
             Console.ReadLine();
         }
 
-        public void Generics()
+        public static void Generics()
         {
             var myList = new List<Person>();
             Console.WriteLine(myList.GetType().Name);
@@ -97,7 +110,7 @@ namespace ReflectionSample
             var coffeeService = iocContainer.Resolve<ICoffeeService>();
         }
 
-        public void NetworkMonitorExample()
+        public static void NetworkMonitorExample()
         {
             BootStrapFromConfiguration();
 
@@ -176,7 +189,7 @@ namespace ReflectionSample
             }
         }
 
-        public void InstantiatingAndManipulatingObjects()
+        public static void InstantiatingAndManipulatingObjects()
         {
             var personType = typeof(Person);
             var personConstructors = personType.GetConstructors(
@@ -274,9 +287,8 @@ namespace ReflectionSample
               null, personForManipulation, new[] { "something to yell" });
         }
 
-        public void InspectingMetadata()
+        public static void InspectingMetadata()
         {
-            string name = "Kevin";
             //var stringType = name.GetType();
             var stringType = typeof(string);
             Console.WriteLine(stringType);
