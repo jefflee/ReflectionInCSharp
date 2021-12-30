@@ -26,6 +26,8 @@ namespace ReflectionSample
             //Generics();
 
             ReflectionMagic();
+
+            Console.ReadLine();
         }
 
         static void ReflectionMagic()
@@ -40,8 +42,6 @@ namespace ReflectionSample
 
             //person.AsDynamic().MyMethod()...
             //person.AsDynamic().MyProperty = ...
-
-            Console.ReadLine();
         }
 
         public static void Generics()
